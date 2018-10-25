@@ -1,5 +1,3 @@
-
-
 import json
 import random
 
@@ -24,7 +22,9 @@ class Handler(BaseHTTPRequestHandler):
 
         # Hive object from request payload
         hive = json.loads(payload)
-
+        
+        print(hive, file=open("log.txt", "a")) #Make log file
+        
         # Loop through ants and give orders
         orders = {}
         # HERE I FIND HIVE'S LIMITS'
