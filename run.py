@@ -23,6 +23,12 @@ class Handler(BaseHTTPRequestHandler):
 
         # Hive object from request payload
         hive = json.loads(payload)
+        
+        f = open('log.txt', 'a')
+        #print("f.closed",f.closed)
+        json.dump(hive, f)
+        f.close()
+        #print("f.closed",f.closed)
 
         # Loop through ants and give orders
         orders = {}
@@ -42,8 +48,7 @@ class Handler(BaseHTTPRequestHandler):
             out = bytes(response)
 
         self.wfile.write(out)
-        print("Trick:",  hive['tick'], response)
-
+        
         return
 
 def run():
